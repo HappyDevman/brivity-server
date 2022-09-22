@@ -1,0 +1,6 @@
+.flex.justify-between.items-center.py-4
+  .text-xl.font-bold
+    = t('post.all_posts')
+    = " (#{posts.count})"
+  = link_to t('post.new'), new_post_path, class: 'py-2 px-4 border border-transparent rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700'
+= render partial: 'posts/list', locals: { posts: posts }

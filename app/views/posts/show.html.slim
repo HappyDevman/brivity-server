@@ -1,0 +1,11 @@
+.mt-4
+  h3.text-xl.font-bold.pb-2= post.title
+  p.card-text= post.content
+  i.text-xs = t('post.written_by', name: post.author.parsed_fullname)
+.mt-6
+  span.px-2.py-1.rounded-2xl.bg-green-500.text-white.text-xs
+    = t('comment.title', count: post.comments.count)
+  .py-2
+    = render partial: 'comments/list', locals: { comments: post.comments, post: post }
+    = render partial: 'comments/form', locals: { post: post }
+    = link_to(t('post.goto_main'), posts_path, class: 'text-indigo-600 hover:text-indigo-500 focus:outline-nont focus:underline')

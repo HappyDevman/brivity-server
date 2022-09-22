@@ -1,0 +1,44 @@
+<h2 class="mb-6 text-center text-3xl leading-9 font-extrabold text-gray-900">Sign up</h2>
+<div class="w-max mx-auto bg-gray-200 py-8 px-4 shadow sm:rounded-lg sm:px-10">
+  <div class="flex justify-center">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    
+      <div class="field mt-2">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name, class: "w-96 rounded-md", autofocus: true %>
+      </div>
+
+      <div class="field mt-2">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name, class: "w-96 rounded-md" %>
+      </div>
+      
+      <div class="field mt-2">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, class: "w-96 rounded-md", autocomplete: "email" %>
+      </div>
+    
+      <div class="field mt-2">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, class: "w-96 rounded-md", autocomplete: "new-password" %>
+      </div>
+    
+      <div class="field mt-2">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, class: "w-96 rounded-md", autocomplete: "new-password" %>
+      </div>
+    
+      <div class="actions pt-4">
+        <%= f.submit "Sign up", class: "flex justify-center w-full py-2 px-4 border border-transparent rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="flex justify-center w-96 mx-auto m-2">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

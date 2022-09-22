@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title= t('app_title')
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'tailwind', media: 'all', 'data-turbolinks-track': 'reload'
+  body
+    .flex.flex-col.justify-center.py-12.sm:px-6.lg:px-8.w-full
+      - if user_signed_in?
+        .flex.items-center.justify-between.p-3.bg-gray-300
+          .text-3xl.font-extrabold= t('app_title')
+          .header-navbar
+            == t('user.sign_in_success', name: current_user.parsed_fullname)
+            = link_to t('user.sign_out'), destroy_user_session_path, method: :delete, class: 'text-indigo-600 hover:text-indigo-500 focus:outline-nont focus:underline pl-10'
+      .w-full.flex.flex-col.items-end
+        - if notice
+          p.alert.alert-success= notice
+        - if alert
+          p.alert.alert-danger= alert
+      = yield
+      
